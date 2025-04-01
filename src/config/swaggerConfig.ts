@@ -34,6 +34,10 @@ const swaggerOptions = { //Configuració general de Swagger
       {
         name: 'Songs',
         description: 'Rutes relacionades amb les cançons',
+      },
+      {
+        name: 'Comments',
+        description: 'Rutes relacionades amb els comentaris',
       }
     ],
     servers: [

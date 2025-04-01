@@ -54,6 +54,11 @@ export const activitySchema = new Schema<IActivity>({
         enum: ["running","cycling","hiking", "walking"],
         required: true
     },
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment',
+        default: []
+    }],
 });
 
 export interface IActivity {
@@ -69,6 +74,7 @@ export interface IActivity {
     route: mongoose.Types.ObjectId[]; //ruta enregistrada (llista de punts gps)
     musicPlaylist: mongoose.Types.ObjectId[];
     type:"running"|"cycling"|"hiking"|"walking";
+    comments: mongoose.Types.ObjectId[];
 }
 
 const ActivityModel = mongoose.model('Activity',activitySchema);

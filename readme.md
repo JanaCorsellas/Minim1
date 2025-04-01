@@ -1,3 +1,14 @@
+COMENTARIS MÍNIM 1
+
+- He creat el nou model de COMMENTS, amb el servei, controlador i rutes
+- Aquesta col·lecció té 3 tipus de dades diferents: objectId, String i boolean
+- hi ha dues relacions, amb user i activity
+- Tenim les operacions CRUD funcionant perfectament
+- Amb el llistat configurat.
+- També tenim el buscador però no he aconseguit que em funcionés, ja que no interpreta bé els paràmetres que li passo.
+
+
+
 # API Projecte EA
 
 ## Requisits previs
