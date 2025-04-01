@@ -1,10 +1,12 @@
 COMENTARIS MÍNIM 1
 
-- He creat el nou model de COMMENTS, amb el servei, controlador i rutes
-- Aquesta col·lecció té 3 tipus de dades diferents: objectId, String i boolean
+- A mongoDB tenim la nova col·lecció de comments
 - hi ha dues relacions, amb user i activity
+- Aquesta col·lecció té 3 tipus de dades diferents: objectId, String i boolean
+- Tenim un nou endpoint al backend
+- He creat el nou model de COMMENTS, amb el servei, controlador i rutes
 - Tenim les operacions CRUD funcionant perfectament
-- Amb el llistat configurat.
+- Amb el llistat de paginació configurat correctament.
 - També tenim el buscador però no he aconseguit que em funcionés, ja que no interpreta bé els paràmetres que li passo.
 
 
