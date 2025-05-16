@@ -112,6 +112,19 @@ export const getPaginatedCommentsController = async (req: Request, res: Response
       res.status(500).json({ message: 'Error al obtener comentarios' });
     }
 };
+export const getAllCommentsController = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const page = parseInt(req.query.page?.toString() || '1', 10);
+    const limit = parseInt(req.query.limit?.toString() || '10', 10);
+    
+    const result = await commentService.getAllComments(page, limit);
+    
+    res.status(200).json(result);
+  } catch (error) {
+    console.error('Error al obtener comentarios:', error);
+    res.status(500).json({ message: 'Error al obtener comentarios' });
+  }
+};
 export const searchCommentsController = async (req: Request, res: Response): Promise<void> => {
     try {
       const query = req.query.content?.toString();

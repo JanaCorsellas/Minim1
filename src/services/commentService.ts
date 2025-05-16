@@ -48,10 +48,31 @@ export const getPaginatedComments = async (activityId: string, page: number = 1,
   
     return { comments, totalComments, totalPages, currentPage: page };
 };
+export const getAllComments = async (page: number = 1, limit: number = 10): Promise<{
+  comments: IComment[];
+  totalComments: number;
+  totalPages: number;
+  currentPage: number;
+}> => {
+  const skip = (page - 1) * limit;
+  
+  const comments = await CommentModel.find()
+    .populate('author', 'username')
+    .populate('activity', 'name')
+    .skip(skip)
+    .limit(limit)
+    .sort({ createdAt: -1 })
+    .exec();
+  
+  const totalComments = await CommentModel.countDocuments();
+  const totalPages = Math.ceil(totalComments / limit);
+
+  return { comments, totalComments, totalPages, currentPage: page };
+};
 
 export const searchComments = async (query: string): Promise<IComment[]> => {
     try {
-      return await CommentModel.find({ content: { $regex: query, $options: 'i' } })
+      return await CommentModel.find({ content: { $regex: query, $options: 'i' } }) // Explicitly search in the 'content' field
         .populate('author', 'username')
         .populate('activity', 'name');
     } catch (error) {

@@ -38,6 +38,54 @@ const router = express.Router();
 /**
  * @openapi
  * /api/comments:
+ *   get:
+ *     summary: Get all comments with pagination
+ *     tags: [Comments]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *         description: Page number
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *         description: Number of comments per page
+ *     responses:
+ *       200:
+ *         description: List of comments with pagination metadata
+ *       500:
+ *         description: Error retrieving comments
+ */
+router.get('/', commentController.getAllCommentsController);
+
+/**
+ * @openapi
+ * /api/comments/search:
+ *   get:
+ *     summary: Search comments by content
+ *     tags: [Comments]
+ *     parameters:
+ *       - in: query
+ *         name: content
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Keyword to search in the comments' content
+ *     responses:
+ *       200:
+ *         description: List of comments containing the search term
+ *       500:
+ *         description: Error searching comments
+ */
+router.get('/search', commentController.searchCommentsController);
+
+/**
+ * @openapi
+ * /api/comments:
  *   post:
  *     summary: Create a new comment associated with an activity of a user
  *     tags: [Comments]
